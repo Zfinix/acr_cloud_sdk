@@ -279,6 +279,7 @@ internal class MethodCallHandlerImpl(context: Context, activity: Activity?, time
 
     override fun onCancel(arguments: Any?) {
         if (mProcessing && mClient != null) {
+            mClient!!.release()
             mClient!!.cancel()
         }
         reset()

@@ -1,5 +1,4 @@
 import 'package:acr_cloud_sdk_example/core/providers.dart';
-import 'package:acr_cloud_sdk_example/core/viewmodel/song_detail.dart';
 import 'package:acr_cloud_sdk_example/utils/margin.dart';
 import 'package:acr_cloud_sdk_example/utils/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,8 +9,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math' as math show sin, pi, sqrt;
 
 import 'package:flutter/animation.dart';
-import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomePage extends StatefulHookWidget {
   @override

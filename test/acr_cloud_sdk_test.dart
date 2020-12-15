@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-   // expect(await AcrCloudSdk.platformVersion, '42');
+    // expect(await AcrCloudSdk.platformVersion, '42');
   });
 }

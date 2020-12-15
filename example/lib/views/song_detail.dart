@@ -67,7 +67,6 @@ class SongDetailPage extends StatelessWidget {
                             '${songModel?.album?.title ?? ''}',
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.montserrat(
-                              
                               color: Color(0xffA3A3A3),
                               fontSize: 11,
                               fontWeight: FontWeight.w300,

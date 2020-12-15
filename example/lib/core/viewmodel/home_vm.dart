@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:acr_cloud_sdk/acr_cloud_sdk.dart';
 import 'package:acr_cloud_sdk_example/core/network_layer/api/song.dart';
+import 'package:acr_cloud_sdk_example/views/song_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-
-import 'song_detail.dart';
 
 class HomeViewModel extends ChangeNotifier {
   AnimationController controller;
@@ -34,9 +33,9 @@ class HomeViewModel extends ChangeNotifier {
 
       arc
         ..init(
-          host: "" /* obtain from https://www.acrcloud.com/ */,
-          accessKey: "" /* obtain from https://www.acrcloud.com/ */,
-          accessSecret: "" /* obtain from https://www.acrcloud.com/ */,
+          host: '', // obtain from https://www.acrcloud.com/
+          accessKey: '', // obtain from https://www.acrcloud.com/
+          accessSecret: '', // obtain from https://www.acrcloud.com/
           setLog: false,
         )
         ..songModelStream.listen(searchSong);

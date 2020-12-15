@@ -1,8 +1,17 @@
 import 'dart:convert';
 
+/// ACRCloud Music Metadata
+///
+/// https://docs.acrcloud.com/docs/acrcloud/metadata/music/
+///
 class SongModel {
+  /// Response Status
   Status status;
+
+  /// Response metadata
   Metadata metadata;
+
+  /// Response  resultType
   int resultType;
   double costTime;
 
@@ -82,16 +91,37 @@ class Metadata {
 }
 
 class Music {
+  /// Music label information
   String label;
+
+  /// External 3rd party IDs and metadata
   ExternalMetadata externalMetadata;
+
+  /// ACRCloud unique identifier
   String acrid;
+
+  /// Album fields
   Album album;
+
   int resultFrom;
+
+  /// Artists fields
   List<Artists> artists;
+
+  /// Track title
   String title;
+
+  /// Duration of the track in millisecond
   int durationMs;
+
+  /// Release data of the track, format:YYYY-MM-DD
   String releaseDate;
+
+  /// Match confidence score.
+  /// Range: 70 - 100
   int score;
+
+  /// The time position of the audio/song being played (millisecond)
   int playOffsetMs;
 
   Music(
@@ -153,7 +183,10 @@ class Music {
 }
 
 class ExternalMetadata {
+  /// Spotify fields
   Spotify spotify;
+
+  /// Deezer fields
   Deezer deezer;
 
   ExternalMetadata({this.spotify, this.deezer});
@@ -244,7 +277,10 @@ class Spotify {
 }
 
 class SpotifyAlbum {
+  /// Name of the album
   var name;
+
+  // ID of the album
   var id;
 
   SpotifyAlbum({this.name, this.id});
@@ -263,7 +299,10 @@ class SpotifyAlbum {
 }
 
 class SpotifyArtists {
+  /// Name of the artists
   var name;
+
+  // ID of the artists
   var id;
 
   SpotifyArtists({this.name, this.id});
@@ -333,7 +372,10 @@ class DeezerAlbum {
 }
 
 class DeezerArtists {
+  /// Name of the artists
   var name;
+
+  // ID of the artists
   var id;
 
   DeezerArtists({this.name, this.id});
@@ -352,7 +394,10 @@ class DeezerArtists {
 }
 
 class Track {
+  /// Name of the track
   String name;
+
+  // ID of the track
   String id;
 
   Track({this.name, this.id});
