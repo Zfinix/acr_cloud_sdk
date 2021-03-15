@@ -13,7 +13,7 @@ class ServerException implements Exception {
 class CacheException implements Exception {}
 
 class FetchDataException extends ServerException {
-  FetchDataException([String message])
+  FetchDataException([String? message])
       : super(message: "Error During Communication: ");
 }
 
@@ -26,5 +26,5 @@ class UnauthorisedException extends ServerException {
 }
 
 class InvalidInputException extends ServerException {
-  InvalidInputException([String message]) : super(message: "Invalid Input: ");
+  InvalidInputException([String? message]) : super(message: "Invalid Input: ");
 }

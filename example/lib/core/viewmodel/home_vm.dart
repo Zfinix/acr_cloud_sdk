@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomeViewModel extends ChangeNotifier {
-  AnimationController controller;
+  late AnimationController controller;
   final AcrCloudSdk arc = AcrCloudSdk();
   final SongAPI api = SongAPI();
 
-  BuildContext _context;
+  BuildContext? _context;
 
-  SongModel _songModel;
-  SongModel get songModel => _songModel;
-  set songModel(SongModel val) {
+  SongModel? _songModel;
+  SongModel? get songModel => _songModel;
+  set songModel(SongModel? val) {
     _songModel = val;
     notifyListeners();
   }
@@ -33,9 +33,12 @@ class HomeViewModel extends ChangeNotifier {
 
       arc
         ..init(
-          host: '', // obtain from https://www.acrcloud.com/
-          accessKey: '', // obtain from https://www.acrcloud.com/
-          accessSecret: '', // obtain from https://www.acrcloud.com/
+          host:
+              'identify-eu-west-1.acrcloud.com', // obtain from https://www.acrcloud.com/
+          accessKey:
+              '92e5456a723332fd090e3ab70ece161e', // obtain from https://www.acrcloud.com/
+          accessSecret:
+              'orZqaXs6DkJglYXeypJC0YCh0a4LEjOoMdl8gNTJ', // obtain from https://www.acrcloud.com/
           setLog: false,
         )
         ..songModelStream.listen(searchSong);
@@ -65,16 +68,16 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   void searchSong(SongModel song) async {
-    var data = song?.metadata;
+    var data = song.metadata;
 
-    if (data != null && data.music.length > 0) {
+    if (data != null && data.music!.length > 0) {
       var req = await api
-          .dataFromDeezer(data?.music[0].externalMetadata?.deezer?.track?.id);
+          .dataFromDeezer(data.music?[0].externalMetadata?.deezer?.track?.id);
       req.fold(
         (l) => print(l.toString()),
         (songModel) {
           showCupertinoModalBottomSheet(
-              context: _context,
+              context: _context!,
               builder: (_) {
                 return SongDetailPage(songModel);
               });

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SongDetailPage extends StatelessWidget {
-  final DeezerSongModel songModel;
+  final DeezerSongModel? songModel;
   const SongDetailPage([this.songModel]);
 
   @override
@@ -29,7 +29,7 @@ class SongDetailPage extends StatelessWidget {
                           ? DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                songModel?.album?.coverMedium,
+                                songModel?.album?.coverMedium ?? '',
                               ),
                             )
                           : null),

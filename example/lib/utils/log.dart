@@ -10,7 +10,7 @@ class Log {
 
   static void init([bool production = false]) => _instance = Log._(production);
 
-  static Log _instance;
+  static late Log _instance;
 
   final bool production;
 

@@ -10,13 +10,11 @@ import '../base_repository.dart';
 class SongAPI extends BaseRepository {
   final apiHelper = ApiHelper();
 
-  Future<Either<Failure, DeezerSongModel>> dataFromDeezer(String id) async {
-    return await isDeviceOffline()
-        ? informDeviceIsOffline()
-        : _dataFromDeezer(id);
+  Future<Either<Failure, DeezerSongModel>> dataFromDeezer(String? id) async {
+    return _dataFromDeezer(id);
   }
 
-  Future<Either<Failure, DeezerSongModel>> _dataFromDeezer(String id) async {
+  Future<Either<Failure, DeezerSongModel>> _dataFromDeezer(String? id) async {
     try {
       var headers = {
         'Content-type': 'application/json;charset=UTF-8',

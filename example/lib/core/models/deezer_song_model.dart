@@ -1,29 +1,29 @@
 class DeezerSongModel {
-  int id;
-  bool readable;
-  String title;
-  String titleShort;
-  String titleVersion;
-  String isrc;
-  String link;
-  String share;
-  num duration;
-  num trackPosition;
-  num diskNumber;
-  num rank;
-  String releaseDate;
-  bool explicitLyrics;
-  int explicitContentLyrics;
-  int explicitContentCover;
-  String preview;
-  num bpm;
-  num gain;
-  List<String> availableCountries;
-  List<Contributors> contributors;
-  String md5Image;
-  Artist artist;
-  Album album;
-  String type;
+  int? id;
+  bool? readable;
+  String? title;
+  String? titleShort;
+  String? titleVersion;
+  String? isrc;
+  String? link;
+  String? share;
+  num? duration;
+  num? trackPosition;
+  num? diskNumber;
+  num? rank;
+  String? releaseDate;
+  bool? explicitLyrics;
+  int? explicitContentLyrics;
+  int? explicitContentCover;
+  String? preview;
+  num? bpm;
+  num? gain;
+  List<String>? availableCountries;
+  List<Contributors>? contributors;
+  String? md5Image;
+  Artist? artist;
+  Album? album;
+  String? type;
 
   DeezerSongModel({
     this.id,
@@ -75,9 +75,9 @@ class DeezerSongModel {
     gain = json['gain'];
     availableCountries = json['available_countries'].cast<String>();
     if (json['contributors'] != null) {
-      contributors = new List<Contributors>();
+      contributors = <Contributors>[];
       json['contributors'].forEach((v) {
-        contributors.add(new Contributors.fromJson(v));
+        contributors?.add(new Contributors.fromJson(v));
       });
     }
     md5Image = json['md5_image'];
@@ -110,14 +110,14 @@ class DeezerSongModel {
     data['gain'] = this.gain;
     data['available_countries'] = this.availableCountries;
     if (this.contributors != null) {
-      data['contributors'] = this.contributors.map((v) => v.toJson()).toList();
+      data['contributors'] = this.contributors?.map((v) => v.toJson()).toList();
     }
     data['md5_image'] = this.md5Image;
     if (this.artist != null) {
-      data['artist'] = this.artist.toJson();
+      data['artist'] = this.artist?.toJson();
     }
     if (this.album != null) {
-      data['album'] = this.album.toJson();
+      data['album'] = this.album?.toJson();
     }
     data['type'] = this.type;
     return data;
@@ -125,19 +125,19 @@ class DeezerSongModel {
 }
 
 class Contributors {
-  int id;
-  String name;
-  String link;
-  String share;
-  String picture;
-  String pictureSmall;
-  String pictureMedium;
-  String pictureBig;
-  String pictureXl;
-  bool radio;
-  String tracklist;
-  String type;
-  String role;
+  int? id;
+  String? name;
+  String? link;
+  String? share;
+  String? picture;
+  String? pictureSmall;
+  String? pictureMedium;
+  String? pictureBig;
+  String? pictureXl;
+  bool? radio;
+  String? tracklist;
+  String? type;
+  String? role;
 
   Contributors(
       {this.id,
@@ -190,18 +190,18 @@ class Contributors {
 }
 
 class Artist {
-  int id;
-  String name;
-  String link;
-  String share;
-  String picture;
-  String pictureSmall;
-  String pictureMedium;
-  String pictureBig;
-  String pictureXl;
-  bool radio;
-  String tracklist;
-  String type;
+  int? id;
+  String? name;
+  String? link;
+  String? share;
+  String? picture;
+  String? pictureSmall;
+  String? pictureMedium;
+  String? pictureBig;
+  String? pictureXl;
+  bool? radio;
+  String? tracklist;
+  String? type;
 
   Artist(
       {this.id,
@@ -251,18 +251,18 @@ class Artist {
 }
 
 class Album {
-  int id;
-  String title;
-  String link;
-  String cover;
-  String coverSmall;
-  String coverMedium;
-  String coverBig;
-  String coverXl;
-  String md5Image;
-  String releaseDate;
-  String tracklist;
-  String type;
+  int? id;
+  String? title;
+  String? link;
+  String? cover;
+  String? coverSmall;
+  String? coverMedium;
+  String? coverBig;
+  String? coverXl;
+  String? md5Image;
+  String? releaseDate;
+  String? tracklist;
+  String? type;
 
   Album(
       {this.id,

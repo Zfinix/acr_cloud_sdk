@@ -83,17 +83,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
 class Ripples extends HookWidget {
   const Ripples({
-    Key key,
+    Key? key,
     this.size = 80.0,
     this.color = kPrimaryColor,
     this.onPressed,
-    @required this.child,
+    required this.child,
   }) : super(key: key);
 
   final double size;
   final Color color;
   final Widget child;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   Widget _button() {
     final _controller = useProvider(homeVM.select((v) => v.controller));
@@ -104,7 +104,7 @@ class Ripples extends HookWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             gradient: RadialGradient(
-              colors: <Color>[color, Color.lerp(color, Colors.black, .05)],
+              colors: <Color>[color, Color.lerp(color, Colors.black, .05)!],
             ),
           ),
           child: ScaleTransition(
@@ -142,15 +142,15 @@ class Ripples extends HookWidget {
 class _CirclePainter extends CustomPainter {
   _CirclePainter(
     this._animation, {
-    @required this.color,
+    required this.color,
   }) : super(repaint: _animation);
 
-  final Color color;
+  final Color? color;
   final Animation<double> _animation;
 
   void circle(Canvas canvas, Rect rect, double value) {
     final double opacity = (1.0 - (value / 4.0)).clamp(0.0, 1.0);
-    final Color _color = color.withOpacity(opacity);
+    final Color _color = color!.withOpacity(opacity);
 
     final double size = rect.width / 2;
     final double area = size * size;
