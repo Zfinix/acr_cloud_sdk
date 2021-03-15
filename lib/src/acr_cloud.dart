@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -75,14 +74,14 @@ class AcrCloudSdk {
   ///
   /// `recMode` argument is the Recognition mode
   Future<bool> init({
-    @required String host,
-    @required String accessKey,
-    @required String accessSecret,
-    String hostAuto,
-    String accessKeyAuto,
-    String accessSecretAuto,
+    required String host,
+    required String accessKey,
+    required String accessSecret,
+    String? hostAuto,
+    String? accessKeyAuto,
+    String? accessSecretAuto,
     int recorderConfigRate = 8000,
-    Duration requestTimeout,
+    Duration? requestTimeout,
     int recorderConfigChannels = 1,
     bool isVolumeCallback = true,
     bool setLog = true,
@@ -90,9 +89,7 @@ class AcrCloudSdk {
   }) async {
     try {
       var status = await Permission.microphone.status;
-      if ((status.isUndetermined ||
-              status.isDenied ||
-              status.isPermanentlyDenied) &&
+      if ((status.isDenied || status.isPermanentlyDenied) &&
           Platform.isAndroid) {
         // We didn't ask for permission yet.
         await [
@@ -123,9 +120,9 @@ class AcrCloudSdk {
             "host": host,
             "accessKey": accessKey,
             "accessSecret": accessSecret,
-            "hostAuto": host ?? hostAuto,
-            "accessKeyAuto": accessKey ?? accessKeyAuto,
-            "accessSecretAuto": accessSecret ?? accessSecretAuto,
+            "hostAuto": hostAuto ?? host,
+            "accessKeyAuto": accessKeyAuto ?? accessKey,
+            "accessSecretAuto": accessSecretAuto ?? accessSecret,
             "recorderConfigRate": recorderConfigRate,
             "recorderConfigChannels": recorderConfigChannels,
             "isVolumeCallback": isVolumeCallback,

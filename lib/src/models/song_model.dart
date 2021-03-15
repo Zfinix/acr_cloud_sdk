@@ -6,14 +6,15 @@ import 'dart:convert';
 ///
 class SongModel {
   /// Response Status
-  Status status;
+  Status? status;
 
   /// Response metadata
-  Metadata metadata;
+  Metadata? metadata;
 
   /// Response  resultType
-  int resultType;
-  double costTime;
+  int? resultType;
+
+  double? costTime;
 
   SongModel({this.status, this.metadata, this.resultType, this.costTime});
 
@@ -31,10 +32,10 @@ class SongModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.status != null) {
-      data['status'] = this.status.toJson();
+      data['status'] = this.status?.toJson();
     }
     if (this.metadata != null) {
-      data['metadata'] = this.metadata.toJson();
+      data['metadata'] = this.metadata?.toJson();
     }
     data['result_type'] = this.resultType;
     data['cost_time'] = this.costTime;
@@ -43,9 +44,9 @@ class SongModel {
 }
 
 class Status {
-  String msg;
-  String version;
-  int code;
+  String? msg;
+  String? version;
+  int? code;
 
   Status({this.msg, this.version, this.code});
 
@@ -65,16 +66,16 @@ class Status {
 }
 
 class Metadata {
-  List<Music> music;
-  String timestampUtc;
+  List<Music>? music;
+  String? timestampUtc;
 
   Metadata({this.music, this.timestampUtc});
 
   Metadata.fromJson(Map<String, dynamic> json) {
     if (json['music'] != null) {
-      music = new List<Music>();
+      music = <Music>[];
       json['music'].forEach((v) {
-        music.add(new Music.fromJson(v));
+        music?.add(new Music.fromJson(v));
       });
     }
     timestampUtc = json['timestamp_utc'];
@@ -83,7 +84,7 @@ class Metadata {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.music != null) {
-      data['music'] = this.music.map((v) => v.toJson()).toList();
+      data['music'] = this.music?.map((v) => v.toJson()).toList();
     }
     data['timestamp_utc'] = this.timestampUtc;
     return data;
@@ -92,37 +93,37 @@ class Metadata {
 
 class Music {
   /// Music label information
-  String label;
+  String? label;
 
   /// External 3rd party IDs and metadata
-  ExternalMetadata externalMetadata;
+  ExternalMetadata? externalMetadata;
 
   /// ACRCloud unique identifier
-  String acrid;
+  String? acrid;
 
   /// Album fields
-  Album album;
+  Album? album;
 
-  int resultFrom;
+  int? resultFrom;
 
   /// Artists fields
-  List<Artists> artists;
+  List<Artists>? artists;
 
   /// Track title
-  String title;
+  String? title;
 
   /// Duration of the track in millisecond
-  int durationMs;
+  int? durationMs;
 
   /// Release data of the track, format:YYYY-MM-DD
-  String releaseDate;
+  String? releaseDate;
 
   /// Match confidence score.
   /// Range: 70 - 100
-  int score;
+  int? score;
 
   /// The time position of the audio/song being played (millisecond)
-  int playOffsetMs;
+  int? playOffsetMs;
 
   Music(
       {this.label,
@@ -146,9 +147,9 @@ class Music {
     album = json['album'] != null ? new Album.fromJson(json['album']) : null;
     resultFrom = json['result_from'];
     if (json['artists'] != null) {
-      artists = new List<Artists>();
+      artists = <Artists>[];
       json['artists'].forEach((v) {
-        artists.add(new Artists.fromJson(v));
+        artists?.add(new Artists.fromJson(v));
       });
     }
     title = json['title'];
@@ -162,15 +163,15 @@ class Music {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['label'] = this.label;
     if (this.externalMetadata != null) {
-      data['external_metadata'] = this.externalMetadata.toJson();
+      data['external_metadata'] = this.externalMetadata?.toJson();
     }
     data['acrid'] = this.acrid;
     if (this.album != null) {
-      data['album'] = this.album.toJson();
+      data['album'] = this.album?.toJson();
     }
     data['result_from'] = this.resultFrom;
     if (this.artists != null) {
-      data['artists'] = this.artists.map((v) => v.toJson()).toList();
+      data['artists'] = this.artists?.map((v) => v.toJson()).toList();
     }
     data['title'] = this.title;
     data['duration_ms'] = this.durationMs;
@@ -184,10 +185,10 @@ class Music {
 
 class ExternalMetadata {
   /// Spotify fields
-  Spotify spotify;
+  Spotify? spotify;
 
   /// Deezer fields
-  Deezer deezer;
+  Deezer? deezer;
 
   ExternalMetadata({this.spotify, this.deezer});
 
@@ -201,17 +202,17 @@ class ExternalMetadata {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.spotify != null) {
-      data['spotify'] = this.spotify.toJson();
+      data['spotify'] = this.spotify?.toJson();
     }
     if (this.deezer != null) {
-      data['deezer'] = this.deezer.toJson();
+      data['deezer'] = this.deezer?.toJson();
     }
     return data;
   }
 }
 
 class Album {
-  String name;
+  String? name;
 
   Album({this.name});
 
@@ -227,7 +228,7 @@ class Album {
 }
 
 class Artists {
-  String name;
+  String? name;
 
   Artists({this.name});
 
@@ -243,9 +244,9 @@ class Artists {
 }
 
 class Spotify {
-  SpotifyAlbum album;
-  List<SpotifyArtists> artists;
-  Track track;
+  SpotifyAlbum? album;
+  List<SpotifyArtists>? artists;
+  Track? track;
 
   Spotify({this.album, this.artists, this.track});
 
@@ -253,9 +254,9 @@ class Spotify {
     album =
         json['album'] != null ? new SpotifyAlbum.fromJson(json['album']) : null;
     if (json['artists'] != null) {
-      artists = new List<SpotifyArtists>();
+      artists = <SpotifyArtists>[];
       json['artists'].forEach((v) {
-        artists.add(new SpotifyArtists.fromJson(v));
+        artists?.add(new SpotifyArtists.fromJson(v));
       });
     }
     track = json['track'] != null ? new Track.fromJson(json['track']) : null;
@@ -264,13 +265,13 @@ class Spotify {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.album != null) {
-      data['album'] = this.album.toJson();
+      data['album'] = this.album?.toJson();
     }
     if (this.artists != null) {
-      data['artists'] = this.artists.map((v) => v.toJson()).toList();
+      data['artists'] = this.artists?.map((v) => v.toJson()).toList();
     }
     if (this.track != null) {
-      data['track'] = this.track.toJson();
+      data['track'] = this.track?.toJson();
     }
     return data;
   }
@@ -321,9 +322,9 @@ class SpotifyArtists {
 }
 
 class Deezer {
-  DeezerAlbum deezerAlbum;
-  List<DeezerArtists> deezerArtists;
-  Track track;
+  DeezerAlbum? deezerAlbum;
+  List<DeezerArtists>? deezerArtists;
+  Track? track;
 
   Deezer({this.deezerAlbum, this.deezerArtists, this.track});
 
@@ -332,9 +333,9 @@ class Deezer {
         ? new DeezerAlbum.fromJson(json['deezer_album'])
         : null;
     if (json['artists'] != null) {
-      deezerArtists = new List<DeezerArtists>();
+      deezerArtists = <DeezerArtists>[];
       json['artists'].forEach((v) {
-        deezerArtists.add(new DeezerArtists.fromJson(v));
+        deezerArtists?.add(new DeezerArtists.fromJson(v));
       });
     }
     track = json['track'] != null ? new Track.fromJson(json['track']) : null;
@@ -343,20 +344,20 @@ class Deezer {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.deezerAlbum != null) {
-      data['album'] = this.deezerAlbum.toJson();
+      data['album'] = this.deezerAlbum?.toJson();
     }
     if (this.deezerArtists != null) {
-      data['artists'] = this.deezerArtists.map((v) => v.toJson()).toList();
+      data['artists'] = this.deezerArtists?.map((v) => v.toJson()).toList();
     }
     if (this.track != null) {
-      data['track'] = this.track.toJson();
+      data['track'] = this.track?.toJson();
     }
     return data;
   }
 }
 
 class DeezerAlbum {
-  int id;
+  int? id;
 
   DeezerAlbum({this.id});
 
@@ -395,10 +396,10 @@ class DeezerArtists {
 
 class Track {
   /// Name of the track
-  String name;
+  String? name;
 
   // ID of the track
-  String id;
+  String? id;
 
   Track({this.name, this.id});
 

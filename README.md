@@ -3,16 +3,10 @@
 
 Automatic content recognition (ACR) is an identification technology to recognise content played on a media device or present in a media file. This enables users quickly obtain detailed information about the content they have just experienced without any text based input or search efforts.
 
-ACR can help users deal with multimedia more effective and make applications more intelligent. [More info](https://docs.acrcloud.com/docs/acrcloud/introduction/automatic-content-recognition/).
+
 
 ## 🤔 How ACR works
-Take the most popular music recognition and discovery app Shazam for example. The ACR workflow is as follows.
-
-<p float="left">
-<img src="https://www.acrcloud.com/docs/wp-content/uploads/2016/04/shazam_overview-min.jpg" width="500">
-</p>
-
-[More info](https://docs.acrcloud.com/docs/acrcloud/introduction/automatic-content-recognition/).
+ACR can help users deal with multimedia more effective and make applications more intelligent. [More info](https://docs.acrcloud.com/tutorials/recognize-music).
 
 
 ## 📸 Screen Shots
