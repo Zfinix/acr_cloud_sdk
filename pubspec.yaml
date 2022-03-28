@@ -1,10 +1,11 @@
 name: acr_cloud_sdk
-description: A new flutter plugin project.
+description: This is an unofficial ACR Cloud SDK to recognize sound and music influtter
 version: 2.0.1
 homepage: https://github.com/Zfinix/acr_cloud_sdk
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
