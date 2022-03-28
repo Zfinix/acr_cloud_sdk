@@ -20,7 +20,6 @@ class AcrCloudSdkPlugin: FlutterPlugin, ActivityAware {
   private var handler: MethodCallHandlerImpl? = null
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-
     setupChannel(flutterPluginBinding)
   }
 
@@ -51,7 +50,7 @@ class AcrCloudSdkPlugin: FlutterPlugin, ActivityAware {
   }
 
   override fun onDetachedFromActivity() {
-    onDetachedFromActivity()
+   // onDetachedFromActivity()
   }
 
   private fun teardownChannel() {

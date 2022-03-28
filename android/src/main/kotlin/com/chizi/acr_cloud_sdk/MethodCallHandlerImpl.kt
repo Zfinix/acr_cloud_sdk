@@ -272,7 +272,6 @@ internal class MethodCallHandlerImpl(context: Context, activity: Activity?, time
                 this.resultEvents = events
             }
             else -> {
-                
             }
         }
     }

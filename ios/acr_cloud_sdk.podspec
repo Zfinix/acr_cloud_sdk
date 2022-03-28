@@ -19,13 +19,9 @@ A new flutter plugin project.
   s.platform = :ios, '8.0'
 
   s.requires_arc = true
-
-s.frameworks = 'AVFoundation', 'AudioToolbox', 'Security'
-
-s.libraries = 'resolv', 'c++'
-
-s.vendored_libraries = 'Libraries/libACRCloud_IOS_SDK.a'
-  
+  s.frameworks = 'AVFoundation', 'AudioToolbox', 'Security'
+  s.libraries = 'resolv', 'c++'
+  s.vendored_libraries = 'Libraries/libACRCloud_IOS_SDK.a'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
