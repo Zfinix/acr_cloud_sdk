@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/services.dart';
@@ -31,13 +33,13 @@ enum ACRCloudRecMode {
 ///
 class AcrCloudSdk {
   static const MethodChannel _channel =
-      const MethodChannel('plugins.chizi.tech/acr_cloud_sdk');
+      MethodChannel('plugins.chizi.tech/acr_cloud_sdk');
 
   static const EventChannel _resultChannel =
-      const EventChannel('plugins.chizi.tech/acr_cloud_sdk.result');
+      EventChannel('plugins.chizi.tech/acr_cloud_sdk.result');
 
   static const EventChannel _timeChannel =
-      const EventChannel('plugins.chizi.tech/acr_cloud_sdk.time');
+      EventChannel('plugins.chizi.tech/acr_cloud_sdk.time');
 
   /// Fires whenever a song's time is recognized
   /// returns data as ```double```
