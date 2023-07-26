@@ -66,6 +66,7 @@ class Status {
 class Metadata {
   List<Music>? music;
   String? timestampUtc;
+  List<LiveACR>? custom_streams;
 
   Metadata({this.music, this.timestampUtc});
 
@@ -76,6 +77,12 @@ class Metadata {
         music?.add(Music.fromJson(v));
       });
     }
+    if (json['custom_streams'] != null) {
+      custom_streams = <LiveACR>[];
+      json['custom_streams'].forEach((v) {
+        custom_streams?.add(LiveACR.fromJson(v));
+      });
+    }
     timestampUtc = json['timestamp_utc'];
   }
 
@@ -83,6 +90,9 @@ class Metadata {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (music != null) {
       data['music'] = music?.map((v) => v.toJson()).toList();
+    }
+    if (custom_streams != null) {
+      data['custom_streams'] = custom_streams?.map((v) => v.toJson()).toList();
     }
     data['timestamp_utc'] = timestampUtc;
     return data;
@@ -408,6 +418,49 @@ class Track {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['id'] = id;
+    return data;
+  }
+}
+
+// This function serves us to take data from the array of the identified channel.
+class LiveACR {
+  // ID
+  String? acrid;
+
+  // Type of input
+  String? result_type;
+
+  // Score
+  dynamic score;
+
+  // Timestamp
+  dynamic timestamp_ms;
+
+  // Title
+  String? title;
+
+  LiveACR(
+      {this.acrid,
+      this.result_type,
+      this.score,
+      this.timestamp_ms,
+      this.title});
+
+  LiveACR.fromJson(Map<String, dynamic> json) {
+    acrid = json['acrid'];
+    result_type = json['result_type'];
+    score = json['score'];
+    timestamp_ms = json['timestamp_ms'];
+    title = json['title'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['acrid'] = acrid;
+    data['result_type'] = result_type;
+    data['score'] = score;
+    data['timestamp_ms'] = timestamp_ms;
+    data['title'] = title;
     return data;
   }
 }
